@@ -33,4 +33,7 @@ export default {
 button {
     margin-right: 10px;
 }
+#nav-collapse {
+    justify-content: flex-end;
+}
 </style>

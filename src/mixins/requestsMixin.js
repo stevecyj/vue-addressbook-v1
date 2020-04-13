@@ -1,18 +1,18 @@
-const APIURL = 'http://localhost:3006/contacts';
+const APIURL = 'http://laravel.crud.nctu.me/api';
 const axios = require('axios');
 export const requestsMixin = {
     methods: {
         getContacts() {
-            return axios.get(`${APIURL}/contacts`);
+            return axios.get(`${APIURL}`);
         },
         addContact(data) {
-            return axios.post(`${APIURL}/contacts`, data);
+            return axios.post(`${APIURL}/new`, data);
         },
         editContact(data) {
-            return axios.put(`${APIURL}/contacts/${data.id}`, data);
+            return axios.put(`${APIURL}/edit/${data.id}`, data);
         },
         deleteContact(id) {
-            return axios.delete(`${APIURL}/contacts/${id}`);
+            return axios.delete(`${APIURL}/delete/${id}`);
         },
     },
 };

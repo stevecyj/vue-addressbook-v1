@@ -1,183 +1,251 @@
 <template>
-    <ValidationObserver ref="observer" v-slot="{ invalid }">
-        <b-form @submit.prevent="onSubmit" novalidate>
-            <b-form-group label="First Name">
-                <ValidationProvider
-                    name="firstName"
-                    rules="required"
-                    v-slot="{ errors }"
+    <b-container>
+        <ValidationObserver ref="observer" v-slot="{ invalid }">
+            <b-form @submit.prevent="onSubmit" novalidate>
+                <b-row>
+                    <b-col>
+                        <b-form-group label="姓名">
+                            <ValidationProvider
+                                name="name"
+                                rules="required"
+                                v-slot="{ errors }"
+                            >
+                                <b-form-input
+                                    type="text"
+                                    :state="errors.length == 0"
+                                    v-model="form.name"
+                                    required
+                                    placeholder="中文姓名"
+                                    name="name"
+                                ></b-form-input>
+                                <b-form-invalid-feedback
+                                    :state="errors.length == 0"
+                                    >請填寫姓名</b-form-invalid-feedback
+                                >
+                            </ValidationProvider>
+                        </b-form-group>
+                    </b-col>
+                    <b-col>
+                        <b-form-group label="英文姓名">
+                            <ValidationProvider
+                                name="ename"
+                                rules="required"
+                                v-slot="{ errors }"
+                            >
+                                <b-form-input
+                                    type="text"
+                                    :state="errors.length == 0"
+                                    v-model="form.ename"
+                                    required
+                                    placeholder="英文姓名"
+                                    name="ename"
+                                ></b-form-input>
+                                <b-form-invalid-feedback
+                                    :state="errors.length == 0"
+                                    >英文姓名 is
+                                    requied.</b-form-invalid-feedback
+                                >
+                            </ValidationProvider>
+                        </b-form-group>
+                    </b-col>
+                </b-row>
+                <b-row>
+                    <b-col>
+                        <b-form-group label="電話">
+                            <ValidationProvider
+                                name="phone"
+                                rules="required"
+                                v-slot="{ errors }"
+                            >
+                                <b-form-input
+                                    type="text"
+                                    :state="errors.length == 0"
+                                    v-model="form.phone"
+                                    required
+                                    placeholder="電話"
+                                    name="phone"
+                                ></b-form-input>
+                                <b-form-invalid-feedback
+                                    :state="errors.length == 0"
+                                    >請填寫電話</b-form-invalid-feedback
+                                >
+                            </ValidationProvider>
+                        </b-form-group>
+                    </b-col>
+                    <b-col>
+                        <b-form-group label="電子信箱">
+                            <ValidationProvider
+                                name="email"
+                                rules="required"
+                                v-slot="{ errors }"
+                            >
+                                <b-form-input
+                                    type="text"
+                                    :state="errors.length == 0"
+                                    v-model="form.email"
+                                    required
+                                    placeholder="name@expample.com"
+                                    name="email"
+                                ></b-form-input>
+                                <b-form-invalid-feedback
+                                    :state="errors.length == 0"
+                                    >請填寫電子信箱</b-form-invalid-feedback
+                                >
+                            </ValidationProvider>
+                        </b-form-group>
+                    </b-col>
+                    <b-col>
+                        <b-form-group label="性別">
+                            <ValidationProvider
+                                name="sex"
+                                rules="required"
+                                v-slot="{ errors }"
+                            >
+                                <b-form-input
+                                    type="text"
+                                    :state="errors.length == 0"
+                                    v-model="form.sex"
+                                    required
+                                    placeholder="性別"
+                                    name="sex"
+                                ></b-form-input>
+                                <b-form-invalid-feedback
+                                    :state="errors.length == 0"
+                                    >請填寫性別</b-form-invalid-feedback
+                                >
+                            </ValidationProvider>
+                        </b-form-group>
+                    </b-col>
+                </b-row>
+                <b-row>
+                    <b-col>
+                        <b-form-group label="居住城市">
+                            <ValidationProvider
+                                name="city"
+                                rules="required"
+                                v-slot="{ errors }"
+                            >
+                                <b-form-input
+                                    type="text"
+                                    :state="errors.length == 0"
+                                    v-model="form.city"
+                                    required
+                                    placeholder="居住城市"
+                                    name="city"
+                                ></b-form-input>
+                                <b-form-invalid-feedback
+                                    :state="errors.length == 0"
+                                    >請填寫居住城市</b-form-invalid-feedback
+                                >
+                            </ValidationProvider>
+                        </b-form-group>
+                    </b-col>
+                    <b-col>
+                        <b-form-group label="鄉鎮市區">
+                            <ValidationProvider
+                                name="township"
+                                rules="required"
+                                v-slot="{ errors }"
+                            >
+                                <b-form-input
+                                    type="text"
+                                    :state="errors.length == 0"
+                                    v-model="form.township"
+                                    required
+                                    placeholder="鄉鎮市區"
+                                    name="township"
+                                ></b-form-input>
+                                <b-form-invalid-feedback
+                                    :state="errors.length == 0"
+                                    >請填寫鄉鎮市區</b-form-invalid-feedback
+                                >
+                            </ValidationProvider>
+                        </b-form-group>
+                    </b-col>
+                    <b-col>
+                        <b-form-group label="郵遞區號">
+                            <ValidationProvider
+                                name="postcode"
+                                rules="required"
+                                v-slot="{ errors }"
+                            >
+                                <b-form-input
+                                    type="text"
+                                    :state="errors.length == 0"
+                                    v-model="form.postcode"
+                                    required
+                                    placeholder="郵遞區號"
+                                    name="postcode"
+                                ></b-form-input>
+                                <b-form-invalid-feedback
+                                    :state="errors.length == 0"
+                                    >請填寫郵遞區號</b-form-invalid-feedback
+                                >
+                            </ValidationProvider>
+                        </b-form-group>
+                    </b-col>
+                </b-row>
+                <b-row>
+                    <b-col>
+                        <b-form-group label="詳細地址">
+                            <ValidationProvider
+                                name="address"
+                                rules="required"
+                                v-slot="{ errors }"
+                            >
+                                <b-form-input
+                                    type="text"
+                                    :state="errors.length == 0"
+                                    v-model="form.address"
+                                    required
+                                    placeholder="詳細地址"
+                                    name="address"
+                                ></b-form-input>
+                                <b-form-invalid-feedback
+                                    :state="errors.length == 0"
+                                    >請填寫詳細地址</b-form-invalid-feedback
+                                >
+                            </ValidationProvider>
+                        </b-form-group>
+                    </b-col>
+                </b-row>
+                <b-row>
+                    <b-col>
+                        <b-form-group label="備註">
+                            <ValidationProvider
+                                name="notes"
+                                rules="required"
+                                v-slot="{ errors }"
+                            >
+                                <b-form-input
+                                    type="text"
+                                    :state="errors.length == 0"
+                                    v-model="form.notes"
+                                    required
+                                    placeholder="備註"
+                                    name="notes"
+                                ></b-form-input>
+                                <b-form-invalid-feedback
+                                    :state="errors.length == 0"
+                                    >請填寫備註</b-form-invalid-feedback
+                                >
+                            </ValidationProvider>
+                        </b-form-group>
+                    </b-col>
+                </b-row>
+
+                <b-button
+                    type="submit"
+                    variant="primary"
+                    style="margin-right: 10px;"
+                    >儲存</b-button
                 >
-                    <b-form-input
-                        type="text"
-                        :state="errors.length == 0"
-                        v-model="form.firstName"
-                        required
-                        placeholder="First Name"
-                        name="firstName"
-                    ></b-form-input>
-                    <b-form-invalid-feedback :state="errors.length == 0"
-                        >First name is requied.</b-form-invalid-feedback
-                    >
-                </ValidationProvider>
-            </b-form-group>
-            <b-form-group label="Last Name">
-                <ValidationProvider
-                    name="lastName"
-                    rules="required"
-                    v-slot="{ errors }"
+                <b-button type="reset" variant="danger" @click="cancel()"
+                    >取消</b-button
                 >
-                    <b-form-input
-                        type="text"
-                        :state="errors.length == 0"
-                        v-model="form.lastName"
-                        required
-                        placeholder="Last Name"
-                        name="lastName"
-                    ></b-form-input>
-                    <b-form-invalid-feedback :state="errors.length == 0"
-                        >Last name is requied.</b-form-invalid-feedback
-                    >
-                </ValidationProvider>
-            </b-form-group>
-            <b-form-group label="Address">
-                <ValidationProvider
-                    name="addressLineOne"
-                    rules="required"
-                    v-slot="{ errors }"
-                >
-                    <b-form-input
-                        type="text"
-                        :state="errors.length == 0"
-                        v-model="form.addressLineOne"
-                        required
-                        placeholder="Address"
-                        name="addressLineOne"
-                    ></b-form-input>
-                    <b-form-invalid-feedback :state="errors.length == 0"
-                        >Address is required.</b-form-invalid-feedback
-                    >
-                </ValidationProvider>
-            </b-form-group>
-            <b-form-group label="City">
-                <ValidationProvider
-                    name="city"
-                    rules="required"
-                    v-slot="{ errors }"
-                >
-                    <b-form-input
-                        type="text"
-                        :state="errors.length == 0"
-                        v-model="form.city"
-                        required
-                        placeholder="City"
-                        name="city"
-                    ></b-form-input>
-                    <b-form-invalid-feedback :state="errors.length == 0"
-                        >City is required.</b-form-invalid-feedback
-                    >
-                </ValidationProvider>
-            </b-form-group>
-            <b-form-group label="Postal Code">
-                <ValidationProvider
-                    name="postalCode"
-                    rules="required|postal_code:country"
-                    v-slot="{ errors }"
-                >
-                    <b-form-input
-                        type="text"
-                        :state="errors.length == 0"
-                        v-model="form.postalCode"
-                        required
-                        placeholder="Postal Code"
-                        name="postalCode"
-                    ></b-form-input>
-                    <b-form-invalid-feedback :state="errors.length == 0"
-                        >Postal code is requied.</b-form-invalid-feedback
-                    >
-                </ValidationProvider>
-            </b-form-group>
-            <b-form-group label="Country">
-                <ValidationProvider
-                    name="country"
-                    rules="required"
-                    v-slot="{ errors }"
-                >
-                    <b-form-select
-                        :options="countries"
-                        :state="errors.length == 0"
-                        v-model="form.country"
-                        required
-                        placeholder="Country"
-                        name="country"
-                    ></b-form-select>
-                    <b-form-invalid-feedback :state="errors.length == 0"
-                        >Country is requied.</b-form-invalid-feedback
-                    >
-                </ValidationProvider>
-            </b-form-group>
-            <b-form-group label="Email">
-                <ValidationProvider
-                    name="email"
-                    rules="required|email"
-                    v-slot="{ errors }"
-                >
-                    <b-form-input
-                        type="text"
-                        :state="errors.length == 0"
-                        v-model="form.email"
-                        required
-                        placeholder="Email"
-                        name="email"
-                    ></b-form-input>
-                    <b-form-invalid-feedback :state="errors.length == 0">{{
-                        errors.join('. ')
-                    }}</b-form-invalid-feedback>
-                </ValidationProvider>
-            </b-form-group>
-            <b-form-group label="Phone">
-                <ValidationProvider
-                    name="phone"
-                    rules="required|phone:country"
-                    v-slot="{ errors }"
-                >
-                    <b-form-input
-                        type="text"
-                        :state="errors.length == 0"
-                        v-model="form.phone"
-                        required
-                        placeholder="Phone"
-                        name="phone"
-                    ></b-form-input>
-                    <b-form-invalid-feedback :state="errors.length == 0">{{
-                        errors.join('. ')
-                    }}</b-form-invalid-feedback>
-                </ValidationProvider>
-            </b-form-group>
-            <b-form-group label="Age">
-                <ValidationProvider
-                    name="age"
-                    rules="required|min_value:0|max_value:200"
-                    v-slot="{ errors }"
-                >
-                    <b-form-input
-                        type="text"
-                        :state="errors.length == 0"
-                        v-model="form.age"
-                        required
-                        placeholder="Age"
-                        name="age"
-                    ></b-form-input>
-                    <b-form-invalid-feedback :state="errors.length == 0">{{
-                        errors.join('. ')
-                    }}</b-form-invalid-feedback>
-                </ValidationProvider>
-            </b-form-group>
-            <b-button type="submit" variant="primary">Submit</b-button>
-            <b-button type="reset" variant="danger" @click="cancel()"
-                >Cancel</b-button
-            >
-        </b-form>
-    </ValidationObserver>
+            </b-form>
+        </ValidationObserver>
+    </b-container>
 </template>
 <script>
 import { COUNTRIES } from '@/helpers/exports';
@@ -201,7 +269,7 @@ export default {
                 await this.addContact(this.form);
             }
             const response = await this.getContacts();
-            this.$store.commit('setContacts', response.data);
+            this.$store.commit('setContacts', response.data.data);
             this.$emit('saved');
         },
         cancel() {
